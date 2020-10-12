@@ -1,0 +1,26 @@
+1. Criar a máquina virtual que vai ter o nosso servidor web
+2. create bucket 
+3. Ir ao cmd para fazer upload do nosso código: 
+    gsutil -m cp -r gdg gs://gdgtestingproject-code-repository
+4. Instalar Apache e PHP
+    sudo apt-get update && sudo apt-get install apache2 -y
+    echo '<!doctype html><html><body><h1>Hello World!</h1></body></html>' | sudo tee /var/www/html/index.html
+    sudo apt install php libapache2-mod-php php-mysql
+5. Modificar a ordem que o Apache segue ao procurar o index
+    sudo nano /etc/apache2/mods-enabled/dir.conf
+6. Actualizar as configurações Apache
+    sudo systemctl reload apache2
+    sudo systemctl status apache2
+7. Copiar o nosso programa para a máquina virtual
+    cd /var/www/html
+    sudo gsutil -m cp -r gs://gdgtestingproject-code-repository/gdg .
+9. Actualizar permissões
+    sudo chmod 777 -R /var/www/html/gdg
+9. Criar uma instância do Cloud SQL: MySQL
+
+10. Actualizar o IP da cloud instance
+    cd gdg
+    nano connection.php
+10. Testar código
+
+
